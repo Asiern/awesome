@@ -15,6 +15,19 @@ local theme = {}
 -- Logo
 theme.logo_path = themes_path .. "/assets/logo.png"
 
+-- Icons
+theme.icons_path = themes_path .. "/assets/icons"
+theme.bell_path = theme.icons_path .. "/bell.svg"
+theme.battery_path = theme.icons_path .. "/battery.svg"
+theme.battery_charging_path = theme.icons_path .. "/battery-charging.svg"
+theme.clock_path = theme.icons_path .. "/clock.svg"
+theme.globe_path = theme.icons_path .. "/globe.svg"
+theme.layout_path = theme.icons_path .. "/layout.svg"
+theme.moon_path = theme.icons_path .. "/moon.svg"
+theme.power_path = theme.icons_path .. "/power.svg"
+theme.wifi_off_path = theme.icons_path .. "/wifi-off.svg"
+theme.wifi_path = theme.icons_path .. "/wifi_path.svg"
+
 -- Font
 theme.font_name = "Poppins"
 theme.font_size = "8"

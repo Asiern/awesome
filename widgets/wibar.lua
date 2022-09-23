@@ -1,7 +1,6 @@
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local theme = beautiful.get()
 local wibox = require("wibox")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -39,16 +38,22 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons
     }
 
+    local power = wibox.widget({
+        widget = wibox.widget.imagebox,
+        resize = true,
+        image = beautiful.power_path
+    })
+
     s.wibar = awful.wibar({
         type = "dock",
         position = "top",
         screen = s,
         height = dpi(60),
         width = s.geometry.width - dpi(40),
-        bg = theme.wibar_bg,
+        bg = beautiful.wibar_bg,
         ontop = true,
         visible = true,
-        shape = shapes.rounded_rect(theme.border_radius)
+        shape = shapes.rounded_rect(beautiful.border_radius)
     })
 
     awful.placement.top(s.wibar, {
@@ -71,12 +76,18 @@ awful.screen.connect_for_each_screen(function(s)
                     taglist,
                     nil,
                     layout = wibox.layout.fixed.horizontal
+                },
+                {
+                    power,
+                    nil,
+                    spacing = dpi(10),
+                    layout = wibox.layout.fixed.horizontal
                 }
             },
             margins = dpi(10),
             widget = wibox.container.margin
         },
-        bg = theme.wibar_bg,
+        bg = beautiful.wibar_bg,
         widget = wibox.container.background
     })
 
