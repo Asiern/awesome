@@ -1,1 +1,7 @@
 require(... .. ".wibar")
+require(... .. ".sysinfo")
+require(... .. ".power")
+require(... .. ".clock")
+require(... .. ".logo")
+require(... .. ".margin_container")
+require(... .. ".tooltip")

@@ -1,20 +1,31 @@
+-- Awsome library
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
+
+-- DPI
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+-- Utilities
 local utilities = require("utilities")
 local shapes = utilities.shapes
+local margin = require("widgets.margin_container")
+
+-- Widgets
+local sysinfo = require("widgets.sysinfo")
+local power = require("widgets.power")
+local clock = require("widgets.clock")
+local logo = require("widgets.logo")
 
 local taglist_buttons = gears.table.join(awful.button({}, 1, function(t)
     t:view_only()
-end), awful.button({modkey}, 1, function(t)
+end), awful.button({ modkey }, 1, function(t)
     if client.focus then
         client.focus:move_to_tag(t)
     end
-end), awful.button({}, 3, awful.tag.viewtoggle), awful.button({modkey}, 3, function(t)
+end), awful.button({}, 3, awful.tag.viewtoggle), awful.button({ modkey }, 3, function(t)
     if client.focus then
         client.focus:toggle_tag(t)
     end
@@ -26,10 +37,32 @@ end))
 
 awful.screen.connect_for_each_screen(function(s)
 
-    local logo = wibox.widget({
-        widget = wibox.widget.imagebox,
-        image = beautiful.logo_path,
-        resize = true
+    local notifications = wibox.widget({
+        margin(
+            {
+                {
+                    {
+                        widget = wibox.widget.imagebox,
+                        image = beautiful.bell_path,
+                        resize = true
+                    },
+                    widget = wibox.container.margin,
+                    right = dpi(5)
+                },
+                {
+                    {
+                        widget = wibox.widget.imagebox,
+                        image = beautiful.layout_path,
+                        resize = true
+                    },
+                    widget = wibox.container.margin
+                },
+                widget = wibox.layout.fixed.horizontal
+            }
+        ),
+        widget = wibox.container.background,
+        bg = beautiful.wibar_wbg,
+        shape = shapes.rounded_rect(beautiful.border_radius)
     })
 
     local taglist = awful.widget.taglist {
@@ -38,17 +71,12 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons
     }
 
-    local power = wibox.widget({
-        widget = wibox.widget.imagebox,
-        resize = true,
-        image = beautiful.power_path
-    })
 
     s.wibar = awful.wibar({
         type = "dock",
         position = "top",
         screen = s,
-        height = dpi(60),
+        height = dpi(50),
         width = s.geometry.width - dpi(40),
         bg = beautiful.wibar_bg,
         ontop = true,
@@ -61,34 +89,35 @@ awful.screen.connect_for_each_screen(function(s)
     })
 
     -- Add widgets to wibar
-    s.wibar:setup({
+    s.wibar:setup({ -- Margin container
         {
-            {
-                layout = wibox.layout.align.horizontal,
-                expand = "none",
+            { -- Layout container
+
                 {
+                    -- Logo
                     logo,
-                    nil,
-                    spacing = dpi(10),
+                    -- Clock
+                    clock,
+                    -- Layout selector
+                    notifications,
                     layout = wibox.layout.fixed.horizontal
                 },
+                -- Taglist
+                taglist,
                 {
-                    taglist,
-                    nil,
-                    layout = wibox.layout.fixed.horizontal
-                },
-                {
+                    -- System info
+                    sysinfo,
+                    -- Power
                     power,
-                    nil,
-                    spacing = dpi(10),
                     layout = wibox.layout.fixed.horizontal
-                }
+                },
+                layout = wibox.layout.flex.horizontal
             },
-            margins = dpi(10),
-            widget = wibox.container.margin
+            widget = wibox.container.background
+            -- bg = "#FF00FF"
         },
-        bg = beautiful.wibar_bg,
-        widget = wibox.container.background
+        widget = wibox.container.margin,
+        margins = dpi(10)
     })
 
     -- Show bar on full screen

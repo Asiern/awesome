@@ -1,5 +1,5 @@
 ---------------------------
--- Default awesome theme --
+------ awesome theme ------
 ---------------------------
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -26,31 +26,26 @@ theme.layout_path = theme.icons_path .. "/layout.svg"
 theme.moon_path = theme.icons_path .. "/moon.svg"
 theme.power_path = theme.icons_path .. "/power.svg"
 theme.wifi_off_path = theme.icons_path .. "/wifi-off.svg"
-theme.wifi_path = theme.icons_path .. "/wifi_path.svg"
+theme.wifi_path = theme.icons_path .. "/wifi.svg"
 
 -- Font
 theme.font_name = "Poppins"
-theme.font_size = "8"
+theme.font_size = "12"
 theme.font = theme.font_name .. " " .. theme.font_size
 
 -- Colors
-theme.wibar_bg = "#F2F2F2" -- Wibar background
+theme.wibar_bg = "#E4E4E7" -- Wibar background
 theme.wibar_fg = "#000000" -- Wibar foreground
 theme.wibar_wbg = "#FFFFFF" -- Wibar widget background
 
+-- Spacing/Shapes
 theme.useless_gap = dpi(0)
+theme.border_radius = dpi(5)
+theme.widget_spacing = dpi(5)
 
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
--- Example:
--- theme.taglist_bg_focus = "#ff0000"
+-- Tooltips
+theme.tooltip_bg = theme.wibar_wbg
+theme.tooltip_fg = theme.wibar_fg
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -98,7 +93,7 @@ theme.titlebar_floating_button_normal_active = default_themes_path .. "default/t
 theme.titlebar_floating_button_focus_active = default_themes_path .. "default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = default_themes_path ..
-                                                      "default/titlebar/maximized_normal_inactive.png"
+    "default/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive = default_themes_path .. "default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = default_themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = default_themes_path .. "default/titlebar/maximized_focus_active.png"

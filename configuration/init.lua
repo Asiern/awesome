@@ -1,3 +1,5 @@
 require(... .. ".tags")
 require(... .. ".keys")
 require(... .. ".ruled")
+require(... .. ".autostart")
+require(... .. ".apps")

@@ -1,2 +1,0 @@
-local awful = require("awful")
-

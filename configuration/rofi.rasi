@@ -1,0 +1,24 @@
+configuration {
+    font:   "Poppins 12";
+    show-icons: true;
+
+}
+
+*{
+    BG: "#FFF";
+    FG: "#000#";
+}
+
+window {
+    transparency:   "real";
+    background-color:   @BG;
+    text-color: @FG;
+    border-radius: 8px;
+    width: 700px;
+}
+
+prompt {
+    enabled:    true;
+    background-color:   @BG;
+    text-color: @FG;
+}
