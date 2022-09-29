@@ -20,8 +20,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- Themes
-local themes = { "light", -- 1
-    "dark" -- 2
+local themes = {"light", -- 1
+"dark" -- 2
 }
 -- Set theme
 local theme = themes[2]
@@ -38,22 +38,19 @@ require("configuration")
 -- Notifications
 require("notifications")
 
--- Modules
-require("modules")
-
 -- UI
 require("widgets")
 
 -- {{{ Tag layout
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
-    awful.layout.append_default_layouts({ awful.layout.suit.floating, awful.layout.suit.tile,
-        awful.layout.suit.tile.left, awful.layout.suit.tile.bottom,
-        awful.layout.suit.tile.top, awful.layout.suit.fair,
-        awful.layout.suit.fair.horizontal, awful.layout.suit.spiral,
-        awful.layout.suit.spiral.dwindle, awful.layout.suit.max,
-        awful.layout.suit.max.fullscreen, awful.layout.suit.magnifier,
-        awful.layout.suit.corner.nw })
+    awful.layout.append_default_layouts({awful.layout.suit.floating, awful.layout.suit.tile,
+                                         awful.layout.suit.tile.left, awful.layout.suit.tile.bottom,
+                                         awful.layout.suit.tile.top, awful.layout.suit.fair,
+                                         awful.layout.suit.fair.horizontal, awful.layout.suit.spiral,
+                                         awful.layout.suit.spiral.dwindle, awful.layout.suit.max,
+                                         awful.layout.suit.max.fullscreen, awful.layout.suit.magnifier,
+                                         awful.layout.suit.corner.nw})
 end)
 -- }}}
 
@@ -77,10 +74,9 @@ screen.connect_signal("request::wallpaper", function(s)
 end)
 -- }}}
 
-
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:activate {
+    c:activate{
         context = "mouse_enter",
         raise = false
     }
@@ -95,5 +91,5 @@ gears.timer({
     call_now = true,
     callback = function()
         collectgarbage("collect")
-    end,
+    end
 })

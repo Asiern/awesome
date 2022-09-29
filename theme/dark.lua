@@ -27,6 +27,7 @@ theme.moon_path = theme.icons_path .. "/moon.svg"
 theme.power_path = theme.icons_path .. "/power.svg"
 theme.wifi_off_path = theme.icons_path .. "/wifi-off.svg"
 theme.wifi_path = theme.icons_path .. "/wifi.svg"
+theme.bluetooth_path = theme.icons_path .. "/bluetooth.svg"
 
 -- Font
 theme.font_name = "Poppins"
@@ -93,7 +94,7 @@ theme.titlebar_floating_button_normal_active = default_themes_path .. "default/t
 theme.titlebar_floating_button_focus_active = default_themes_path .. "default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = default_themes_path ..
-    "default/titlebar/maximized_normal_inactive.png"
+                                                      "default/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive = default_themes_path .. "default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = default_themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = default_themes_path .. "default/titlebar/maximized_focus_active.png"

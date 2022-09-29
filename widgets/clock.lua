@@ -4,28 +4,23 @@ local wibox = require("wibox")
 local utilities = require("utilities")
 local shapes = utilities.shapes
 
-local margin_container = require("widgets.margin_container")
+local container = require("widgets.inner_widget")
 
 local tooltip = require("widgets.tooltip")()
 
-local widget = wibox.widget({
-    margin_container({
-        {
-            widget = wibox.widget.imagebox,
-            image = beautiful.clock_path,
-            resize = true
-        },
-        {
-            widget = wibox.widget.textclock,
-            format = "%H:%M",
-            refresh = 60
-        },
-        widget = wibox.layout.fixed.horizontal,
-        spacing = beautiful.widget_spacing
-    }),
-    widget = wibox.container.background,
-    bg = beautiful.wibar_wbg,
-    shape = shapes.rounded_rect(beautiful.border_radius)
+local widget = container({
+    {
+        widget = wibox.widget.imagebox,
+        image = beautiful.clock_path,
+        resize = true
+    },
+    {
+        widget = wibox.widget.textclock,
+        format = "%H:%M",
+        refresh = 60
+    },
+    widget = wibox.layout.fixed.horizontal,
+    spacing = beautiful.widget_spacing
 })
 
 -- Bind tooltip to widget

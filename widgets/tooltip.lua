@@ -4,10 +4,8 @@ local beautiful = require("beautiful")
 local utilities = require("utilities")
 local shapes = utilities.shapes
 
-local function tooltip()
+return function()
     return awful.tooltip {
         shape = shapes.rounded_rect(beautiful.border_radius)
     }
 end
-
-return tooltip
