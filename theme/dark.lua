@@ -47,6 +47,7 @@ theme.widget_spacing = dpi(5)
 -- Tooltips
 theme.tooltip_bg = theme.wibar_wbg
 theme.tooltip_fg = theme.wibar_fg
+theme.titlebar_enabled = true
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)

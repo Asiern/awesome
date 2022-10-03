@@ -7,9 +7,9 @@ local dpi = xresources.apply_dpi
 local utilities = require("utilities")
 local shapes = utilities.shapes
 
-local margin = require("widgets.margin_container")
-
-local tooltip = require("widgets.tooltip")
+local margin = require("widgets.base.margin_container")
+local hover = require("widgets.base.hover")
+local tooltip = require("widgets.base.tooltip")
 
 -- Widgets
 
@@ -47,9 +47,8 @@ local battery_widget = wibox.widget({
 -- Tooltips
 local bluetooth_tooltip = tooltip()
 bluetooth_tooltip:add_to_object(bluetooth_widget)
-
 bluetooth_widget:connect_signal("mouser::enter", function()
-    awful.widget.watch("bash -c ''", 10, function(_, stdout)
+    awful.widget.watch("bash -c 'rfkill list'", 10, function(_, stdout)
         bluetooth_tooltip.text = stdout
     end)
 end)
@@ -87,5 +86,8 @@ local widget = wibox.widget({
 widget:connect_signal("button::press", function()
     -- // TODO sysinfo expended widget
 end)
+
+-- Add hover effect
+hover(widget)
 
 return widget

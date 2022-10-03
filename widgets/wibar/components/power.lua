@@ -4,7 +4,8 @@ local awful = require("awful")
 
 local utilities = require("utilities")
 local shapes = utilities.shapes
-local margin = require("widgets.margin_container")
+local margin = require("widgets.base.margin_container")
+local hover = require("widgets.base.hover")
 
 local widget = wibox.widget({
     margin({
@@ -20,5 +21,8 @@ local widget = wibox.widget({
 widget:connect_signal("button::press", function()
     awful.util.spawn("poweroff")
 end)
+
+-- Add hover effect
+hover(widget)
 
 return widget

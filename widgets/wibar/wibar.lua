@@ -13,12 +13,12 @@ local utilities = require("utilities")
 local shapes = utilities.shapes
 
 -- Widgets
-local sysinfo = require("widgets.sysinfo")
-local power = require("widgets.power")
-local clock = require("widgets.clock")
-local taglist = require("widgets.taglist")
-local logo = require("widgets.logo")
-local notifications = require("widgets.notifications")
+local sysinfo = require("widgets.wibar.components.sysinfo")
+local power = require("widgets.wibar.components.power")
+local clock = require("widgets.wibar.components.clock")
+local taglist = require("widgets.wibar.components.taglist")
+local logo = require("widgets.wibar.components.logo")
+local notifications = require("widgets.wibar.components.notifications")
 
 awful.screen.connect_for_each_screen(function(s)
 
@@ -53,7 +53,7 @@ awful.screen.connect_for_each_screen(function(s)
             sysinfo,
             -- Power
             power,
-            layout = wibox.layout.flex.horizontal
+            layout = wibox.layout.fixed.horizontal
         },
         widget = wibox.container.margin,
         margins = dpi(10)

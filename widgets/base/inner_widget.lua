@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local shapes = require("utilities.shapes")
-local margin = require("widgets.margin_container")
+local margin = require("widgets.base.margin_container")
 
 local function widget(w)
     return wibox.widget({

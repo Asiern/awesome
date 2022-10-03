@@ -1,5 +1,5 @@
 local wibox = require("wibox")
-local container = require("widgets.inner_widget")
+local container = require("widgets.base.inner_widget")
 local beautiful = require("beautiful")
 
 local widget = wibox.widget({
