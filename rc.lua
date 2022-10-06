@@ -12,16 +12,13 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
--- Declarative object management
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
 -- Themes
-local themes = {"light", -- 1
-"dark" -- 2
+local themes = { "light", -- 1
+    "dark" -- 2
 }
 -- Set theme
 local theme = themes[2]
@@ -41,16 +38,19 @@ require("notifications")
 -- UI
 require("widgets")
 
+-- Signals
+require("signal")
+
 -- {{{ Tag layout
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
-    awful.layout.append_default_layouts({awful.layout.suit.floating, awful.layout.suit.tile,
-                                         awful.layout.suit.tile.left, awful.layout.suit.tile.bottom,
-                                         awful.layout.suit.tile.top, awful.layout.suit.fair,
-                                         awful.layout.suit.fair.horizontal, awful.layout.suit.spiral,
-                                         awful.layout.suit.spiral.dwindle, awful.layout.suit.max,
-                                         awful.layout.suit.max.fullscreen, awful.layout.suit.magnifier,
-                                         awful.layout.suit.corner.nw})
+    awful.layout.append_default_layouts({ awful.layout.suit.floating, awful.layout.suit.tile,
+        awful.layout.suit.tile.left, awful.layout.suit.tile.bottom,
+        awful.layout.suit.tile.top, awful.layout.suit.fair,
+        awful.layout.suit.fair.horizontal, awful.layout.suit.spiral,
+        awful.layout.suit.spiral.dwindle, awful.layout.suit.max,
+        awful.layout.suit.max.fullscreen, awful.layout.suit.magnifier,
+        awful.layout.suit.corner.nw })
 end)
 -- }}}
 
@@ -76,7 +76,7 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:activate{
+    c:activate {
         context = "mouse_enter",
         raise = false
     }

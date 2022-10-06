@@ -18,16 +18,21 @@ theme.logo_path = themes_path .. "/assets/logo.png"
 -- Icons
 theme.icons_path = themes_path .. "/assets/icons"
 theme.bell_path = theme.icons_path .. "/bell.svg"
+theme.bell_off_path = theme.icons_path .. "/bell-off.svg"
 theme.battery_path = theme.icons_path .. "/battery.svg"
 theme.battery_charging_path = theme.icons_path .. "/battery-charging.svg"
 theme.clock_path = theme.icons_path .. "/clock.svg"
 theme.globe_path = theme.icons_path .. "/globe.svg"
 theme.layout_path = theme.icons_path .. "/layout.svg"
+theme.log_out_path = theme.icons_path .. "/log-out.svg"
 theme.moon_path = theme.icons_path .. "/moon.svg"
 theme.power_path = theme.icons_path .. "/power.svg"
 theme.wifi_off_path = theme.icons_path .. "/wifi-off.svg"
 theme.wifi_path = theme.icons_path .. "/wifi.svg"
 theme.bluetooth_path = theme.icons_path .. "/bluetooth.svg"
+theme.refresh_cc2_path = theme.icons_path .. "/refresh-ccw.svg"
+theme.lock_path = theme.icons_path .. "/lock.svg"
+theme.x_path = theme.icons_path .. "/x.svg"
 
 -- Font
 theme.font_name = "Poppins"
@@ -36,6 +41,7 @@ theme.font = theme.font_name .. " " .. theme.font_size
 
 -- Colors
 theme.wibar_bg = "#E4E4E7" -- Wibar background
+theme.hover = "#F2F2F2"
 theme.wibar_fg = "#000000" -- Wibar foreground
 theme.wibar_wbg = "#FFFFFF" -- Wibar widget background
 
@@ -95,7 +101,7 @@ theme.titlebar_floating_button_normal_active = default_themes_path .. "default/t
 theme.titlebar_floating_button_focus_active = default_themes_path .. "default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = default_themes_path ..
-                                                      "default/titlebar/maximized_normal_inactive.png"
+    "default/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive = default_themes_path .. "default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = default_themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = default_themes_path .. "default/titlebar/maximized_focus_active.png"
