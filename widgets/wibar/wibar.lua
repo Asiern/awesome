@@ -53,7 +53,8 @@ awful.screen.connect_for_each_screen(function(s)
             sysinfo,
             -- Power
             power,
-            layout = wibox.layout.fixed.horizontal
+            layout = wibox.layout.fixed.horizontal,
+            spacing = dpi(5)
         },
         widget = wibox.container.margin,
         margins = dpi(10)
