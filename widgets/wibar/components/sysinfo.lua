@@ -3,6 +3,7 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local gears = require("gears")
 
 local utilities = require("utilities")
 local shapes = utilities.shapes
@@ -11,38 +12,46 @@ local margin = require("widgets.base.margin_container")
 local hover = require("widgets.base.hover")
 local tooltip = require("widgets.base.tooltip")
 
+-- local panel = require("widgets.panels.sysinfo.sysinfo")
+-- local panel_visible = false
+
 -- Widgets
 
 local bluetooth_widget = wibox.widget({
-    {
-        widget = wibox.widget.imagebox,
-        image = beautiful.bluetooth_path,
-        resize = true
-    },
-    widget = wibox.container.margin,
-    right = dpi(5)
+
+    widget = wibox.widget.imagebox,
+    image = beautiful.bluetooth_path,
+    resize = true
 })
 
 local wifi_widget = wibox.widget({
-    {
-        widget = wibox.widget.imagebox,
-        image = beautiful.wifi_path,
-        resize = true
-    },
-    widget = wibox.container.margin,
-    right = dpi(5),
-    left = dpi(5)
+
+    widget = wibox.widget.imagebox,
+    image = beautiful.wifi_path,
+    resize = true
 })
 
 local battery_widget = wibox.widget({
-    {
-        widget = wibox.widget.imagebox,
-        image = beautiful.battery_path,
-        resize = true
-    },
-    widget = wibox.container.margin,
-    left = dpi(5)
+    widget = wibox.widget.imagebox,
+    image = beautiful.battery_path,
+    resize = true
 })
+
+gears.timer {
+    timeout = 2,
+    call_now = true,
+    autostart = true,
+    callback = function()
+        awful.spawn.easy_async_with_shell(
+            "upower  -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'", function(out)
+                if out:find("discharging") then
+                    battery_widget.image = beautiful.battery_path
+                else
+                    battery_widget.image = beautiful.battery_charging_path
+                end
+            end)
+    end
+}
 
 -- Tooltips
 local bluetooth_tooltip = tooltip()
@@ -76,7 +85,8 @@ local widget = wibox.widget({
         bluetooth_widget,
         wifi_widget,
         battery_widget,
-        widget = wibox.layout.align.horizontal
+        widget = wibox.layout.fixed.horizontal,
+        spacing = dpi(10)
     }, 5, 5, 10, 10),
     widget = wibox.container.background,
     bg = beautiful.wibar_wbg,
@@ -85,6 +95,14 @@ local widget = wibox.widget({
 
 widget:connect_signal("button::press", function()
     -- // TODO sysinfo expended widget
+    -- if panel_visible then
+    --     panel.visible = false
+    --     panel_visible = false
+    -- else
+
+    --     panel.visible = true
+    --     panel_visible = true
+    -- end
 end)
 
 -- Add hover effect
