@@ -1,7 +1,7 @@
 local shapes = require(... .. ".shapes")
 local placement = require(... .. ".placement")
 
-utilities = {
+local utilities = {
 }
 
 utilities.shapes = shapes
