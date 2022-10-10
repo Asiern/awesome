@@ -41,20 +41,31 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to wibar
     s.wibar:setup({ -- Margin container
         {
-            -- Logo
-            logo,
-            -- Clock
-            clock,
-            -- Layout selector
-            notifications,
-            -- Taglist
-            taglist(s),
-            -- System info
-            sysinfo,
-            -- Power
-            power,
-            layout = wibox.layout.fixed.horizontal,
-            spacing = dpi(5)
+            {
+                -- Logo
+                logo,
+                -- Clock
+                clock,
+                -- Notifications & Layout selector
+                notifications,
+                layout = wibox.layout.fixed.horizontal,
+                spacing = dpi(5)
+            },
+            {
+                -- Taglist
+                taglist(s),
+                widget = wibox.container.background,
+                bg = beautiful.wibar_bg
+            },
+            {
+                -- System info
+                sysinfo,
+                -- Power
+                power,
+                layout = wibox.layout.fixed.horizontal,
+                spacing = dpi(5)
+            },
+            layout = wibox.layout.align.horizontal
         },
         widget = wibox.container.margin,
         margins = dpi(10)

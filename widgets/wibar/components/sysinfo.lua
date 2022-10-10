@@ -12,8 +12,8 @@ local margin = require("widgets.base.margin_container")
 local hover = require("widgets.base.hover")
 local tooltip = require("widgets.base.tooltip")
 
--- local panel = require("widgets.panels.sysinfo.sysinfo")
--- local panel_visible = false
+local panel = require("widgets.panels.sysinfo.sysinfo")
+local panel_visible = false
 
 -- Widgets
 
@@ -94,15 +94,15 @@ local widget = wibox.widget({
 })
 
 widget:connect_signal("button::press", function()
-    -- // TODO sysinfo expended widget
-    -- if panel_visible then
-    --     panel.visible = false
-    --     panel_visible = false
-    -- else
+    -- // TODO sysinfo expanded widget
+    if panel_visible then
+        panel.visible = false
+        panel_visible = false
+    else
 
-    --     panel.visible = true
-    --     panel_visible = true
-    -- end
+        panel.visible = true
+        panel_visible = true
+    end
 end)
 
 -- Add hover effect
