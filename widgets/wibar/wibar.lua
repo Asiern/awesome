@@ -19,6 +19,7 @@ local clock = require("widgets.wibar.components.clock")
 local taglist = require("widgets.wibar.components.taglist")
 local logo = require("widgets.wibar.components.logo")
 local notifications = require("widgets.wibar.components.notifications")
+local network = require("widgets.wibar.components.network")
 
 awful.screen.connect_for_each_screen(function(s)
 
@@ -58,6 +59,8 @@ awful.screen.connect_for_each_screen(function(s)
                 bg = beautiful.wibar_bg
             },
             {
+                -- Network
+                network,
                 -- System info
                 sysinfo,
                 -- Power
