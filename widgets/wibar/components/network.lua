@@ -4,6 +4,7 @@ local gears = require("gears")
 local awful = require("awful")
 
 local container = require("widgets.base.inner_widget")
+local hover = require("widgets.base.hover")
 
 local textbox = wibox.widget({
     text = "Not connected",
@@ -34,6 +35,13 @@ local widget = container({
     layout = wibox.layout.fixed.horizontal,
     spacing = beautiful.widget_spacing
 })
+
+widget:connect_signal("button::press", function()
+    -- // TODO copy IP to clipboard
+end)
+
+-- Add hover effect
+hover(widget)
 
 -- textbox:connect_signal("signal::connection", function(info)
 --     textbox.text = info;
